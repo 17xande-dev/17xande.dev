@@ -67,7 +67,7 @@ export interface Project {
   /** Present when the project has something hosted to open. */
   appOrigin?: string;
   /** Key into `icons` in shell.ts. */
-  icon: "tv";
+  icon: "tv" | "sdi";
   /** The screenshot the site index uses as the card's picture. */
   thumb: { file: string; width: number; height: number };
   /** Tags on the site index card. */
@@ -80,6 +80,7 @@ export interface Project {
 }
 
 const TELEPROMPTER_REPO = "https://github.com/17xande-dev/teleprompter";
+const WEB2SDI_REPO = "https://github.com/17xande/bmd-decklink";
 
 export const TELEPROMPTER: Project = {
   slug: "teleprompter",
@@ -161,8 +162,56 @@ export const TELEPROMPTER: Project = {
   ],
 };
 
+export const WEB2SDI: Project = {
+  slug: "web2sdi",
+  name: "web2sdi",
+  tagline: "A live webpage, out of an SDI port.",
+  summary:
+    "Renders any webpage — video and audio included — and plays it out as broadcast SDI through a Blackmagic DeckLink card. A browser source without the rest of OBS.",
+  repo: WEB2SDI_REPO,
+  branch: "main",
+  icon: "sdi",
+  thumb: {
+    file: "control",
+    width: 2048,
+    height: 1280,
+  },
+  tags: ["Zig", "C++", "CEF", "DeckLink", "Windows"],
+  docs: [
+    {
+      slug: "getting-started",
+      title: "Getting started",
+      blurb: "Install it, point it at a page, and get it on the wire.",
+    },
+    {
+      slug: "options",
+      title: "Options & settings",
+      blurb: "Every command-line flag, and where the saved settings live.",
+    },
+    {
+      slug: "how-it-works",
+      title: "How it works",
+      blurb: "The pipeline: Chromium offscreen, a frame buffer, the SDI clock.",
+    },
+    {
+      slug: "building",
+      title: "Building",
+      blurb: "Building the Windows binaries and the installer, from Linux.",
+    },
+  ],
+  nav: [
+    { label: "Screenshots", href: "#screenshots" },
+    { label: "Docs", href: "docs/" },
+  ],
+  footer: [
+    { label: "Docs", href: "docs/" },
+    { label: "Getting started", href: "docs/getting-started/" },
+    { label: "Source", href: WEB2SDI_REPO },
+  ],
+};
+
 /** In the order the site index lists them. */
-export const PROJECTS: Project[] = [TELEPROMPTER];
+export const PROJECTS: Project[] = [TELEPROMPTER, WEB2SDI];
 
 /** The absolute path of a link given relative to a project's root. */
 export function projectHref(p: Project, href: string): string {

@@ -1,6 +1,6 @@
 import { assert, assertEquals } from "@std/assert";
 import { dirname, fromFileUrl, resolve } from "@std/path";
-import { PROJECTS, repoBlob, TELEPROMPTER } from "../src/site.ts";
+import { PROJECTS, repoBlob, TELEPROMPTER, WEB2SDI } from "../src/site.ts";
 import { docSource, rewriteHref } from "./markdown.ts";
 
 const root = resolve(dirname(fromFileUrl(import.meta.url)), "..");
@@ -32,11 +32,16 @@ Deno.test("relative links resolve, not 404", () => {
   );
   // The app repo's docs index is this site's /<slug>/docs/.
   assertEquals(rewriteHref("README.md", T), "/teleprompter/docs/");
+  assertEquals(rewriteHref("README.md", WEB2SDI), "/web2sdi/docs/");
 
   // Anything the docs reference that this site does not publish goes to the
-  // file on GitHub — the project's — rather than to a dead link here.
+  // file on GitHub — the right project's — rather than to a dead link here.
   assertEquals(rewriteHref("../CLAUDE.md", T), `${repoBlob(T)}CLAUDE.md`);
   assertEquals(rewriteHref("../LICENSE", T), `${repoBlob(T)}LICENSE`);
+  assertEquals(
+    rewriteHref("PLAN.md", WEB2SDI),
+    `${repoBlob(WEB2SDI)}PLAN.md`,
+  );
 
   // Absolute and in-page targets are left exactly as written.
   for (

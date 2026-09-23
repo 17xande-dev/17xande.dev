@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- web2sdi's mark — a browser window with a BNC connector where the page
+       would be — recoloured to this site's palette. The original, in blue,
+       is web/icon.svg in the web2sdi repo. -->
+  <rect width="64" height="64" rx="14" fill="#ffa500" />
+  <rect x="8" y="12" width="48" height="40" rx="6" fill="#ffffff" />
+  <rect x="12" y="23" width="40" height="25" rx="2.5" fill="#110d08" />
+  <g fill="#c77800">
+    <circle cx="16.5" cy="17.5" r="1.9" />
+    <circle cx="22.7" cy="17.5" r="1.9" />
+    <circle cx="28.9" cy="17.5" r="1.9" />
+  </g>
+  <circle cx="32" cy="35.5" r="9.4" fill="none" stroke="#ffa500"
+    stroke-width="3.6" />
+  <circle cx="32" cy="35.5" r="2.5" fill="#ffa500" />
+</svg>

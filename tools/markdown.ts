@@ -19,6 +19,7 @@ import "prismjs/components/prism-bash.js";
 import "prismjs/components/prism-go.js";
 import "prismjs/components/prism-json.js";
 import "prismjs/components/prism-css.js";
+import "prismjs/components/prism-powershell.js";
 
 /**
  * Rewrites the docs' relative links, which were written to be read on GitHub

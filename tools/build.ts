@@ -18,11 +18,14 @@ import {
   TAGLINE,
   TELEPROMPTER,
   TELEPROMPTER_APP_ORIGIN,
+  WEB2SDI,
 } from "../src/site.ts";
 import { homeBody } from "../src/pages/home.ts";
 import { notFoundBody } from "../src/pages/notFound.ts";
 import * as teleprompter from "../src/pages/teleprompter/home.ts";
 import * as teleprompterDocs from "../src/pages/teleprompter/docsIndex.ts";
+import * as web2sdi from "../src/pages/web2sdi/home.ts";
+import * as web2sdiDocs from "../src/pages/web2sdi/docsIndex.ts";
 import { docSource, renderMarkdown, stripLeadingH1 } from "./markdown.ts";
 
 const root = resolve(dirname(fromFileUrl(import.meta.url)), "..");
@@ -142,6 +145,15 @@ const sections: Section[] = [
     docsDescription:
       "How to run a service with the teleprompter: operating, shortcuts, themes, architecture and self-hosting.",
     docsIndex: teleprompterDocs.docsIndexBody,
+  },
+  {
+    project: WEB2SDI,
+    description:
+      "web2sdi renders a live webpage — video and audio included — and plays it out as SDI through a Blackmagic DeckLink card, with a control page you drive from a browser.",
+    home: web2sdi.homeBody,
+    docsDescription:
+      "Installing and running web2sdi: first run, every option, how the pipeline works, and building it.",
+    docsIndex: web2sdiDocs.docsIndexBody,
   },
 ];
 
