@@ -53,6 +53,9 @@ export const icons = {
   // redrawn in one colour so it takes the brand accent like the others.
   sdi:
     `<svg viewBox="0 0 64 64" aria-hidden="true" width="20" height="20" fill="currentColor"><path fill-rule="evenodd" d="M14 12h36a6 6 0 0 1 6 6v28a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6V18a6 6 0 0 1 6-6zm-2 11v25h40V23z"/><circle cx="32" cy="35.5" r="9.4" fill="none" stroke="currentColor" stroke-width="3.6"/><circle cx="32" cy="35.5" r="2.5"/></svg>`,
+  // gostore's default store mark, an abstract carrier bag.
+  bag:
+    `<svg viewBox="0 0 24 24" aria-hidden="true" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.2 12H5.2L4 8Z"/><path d="M9 8V5.5a3 3 0 0 1 6 0V8"/></svg>`,
   tv:
     `<svg viewBox="0 0 640 512" aria-hidden="true" width="20" height="20" fill="currentColor"><path d="M64 64v288h512V64H64zM0 64C0 28.7 28.7 0 64 0h512c35.3 0 64 28.7 64 64v288c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zM128 448h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>`,
   arrow:

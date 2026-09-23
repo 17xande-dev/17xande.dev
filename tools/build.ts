@@ -12,6 +12,7 @@ import { dirname, fromFileUrl, join, resolve } from "@std/path";
 import { encodeHex } from "@std/encoding/hex";
 import { esc, renderPage } from "../src/shell.ts";
 import {
+  GOSTORE,
   type Project,
   PROJECTS,
   SITE_ORIGIN,
@@ -26,6 +27,8 @@ import * as teleprompter from "../src/pages/teleprompter/home.ts";
 import * as teleprompterDocs from "../src/pages/teleprompter/docsIndex.ts";
 import * as web2sdi from "../src/pages/web2sdi/home.ts";
 import * as web2sdiDocs from "../src/pages/web2sdi/docsIndex.ts";
+import * as gostore from "../src/pages/gostore/home.ts";
+import * as gostoreDocs from "../src/pages/gostore/docsIndex.ts";
 import { docSource, renderMarkdown, stripLeadingH1 } from "./markdown.ts";
 
 const root = resolve(dirname(fromFileUrl(import.meta.url)), "..");
@@ -154,6 +157,15 @@ const sections: Section[] = [
     docsDescription:
       "Installing and running web2sdi: first run, every option, how the pipeline works, and building it.",
     docsIndex: web2sdiDocs.docsIndexBody,
+  },
+  {
+    project: GOSTORE,
+    description:
+      "gostore is a small, self-hostable online store written in Go: an htmx storefront, PostgreSQL, and PayFast and SnapScan payments, in one static binary.",
+    home: gostore.homeBody,
+    docsDescription:
+      "Running gostore: the local stack, configuration, PayFast and SnapScan payments, theming and deploying.",
+    docsIndex: gostoreDocs.docsIndexBody,
   },
 ];
 

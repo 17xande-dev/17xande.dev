@@ -67,7 +67,7 @@ export interface Project {
   /** Present when the project has something hosted to open. */
   appOrigin?: string;
   /** Key into `icons` in shell.ts. */
-  icon: "tv" | "sdi";
+  icon: "tv" | "sdi" | "bag";
   /** The screenshot the site index uses as the card's picture. */
   thumb: { file: string; width: number; height: number };
   /** Tags on the site index card. */
@@ -81,6 +81,7 @@ export interface Project {
 
 const TELEPROMPTER_REPO = "https://github.com/17xande-dev/teleprompter";
 const WEB2SDI_REPO = "https://github.com/17xande/bmd-decklink";
+const GOSTORE_REPO = "https://github.com/17xande-dev/gostore";
 
 export const TELEPROMPTER: Project = {
   slug: "teleprompter",
@@ -210,8 +211,62 @@ export const WEB2SDI: Project = {
   ],
 };
 
+export const GOSTORE: Project = {
+  slug: "gostore",
+  name: "gostore",
+  tagline: "A small, self-hostable online store, written in Go.",
+  summary:
+    "A catalog, a cart and a checkout for a shop that sells a few things well — books, apparel, downloads — in rand, paid through PayFast or SnapScan. One binary and Postgres.",
+  repo: GOSTORE_REPO,
+  branch: "main",
+  icon: "bag",
+  thumb: {
+    file: "catalog",
+    width: 2048,
+    height: 1280,
+  },
+  tags: ["Go", "htmx", "PostgreSQL", "PayFast", "MIT"],
+  docs: [
+    {
+      slug: "getting-started",
+      title: "Getting started",
+      blurb: "The local stack, a demo catalog, and the first administrator.",
+    },
+    {
+      slug: "configuration",
+      title: "Configuration",
+      blurb: "What it needs to boot, and the settings most stores change.",
+    },
+    {
+      slug: "payments",
+      title: "Payments",
+      blurb: "Setting up PayFast and SnapScan, and going live safely.",
+    },
+    {
+      slug: "theming",
+      title: "Theming",
+      blurb: "Restyling with custom properties, and overriding templates.",
+    },
+    {
+      slug: "deploying",
+      title: "Deploying",
+      blurb: "The container, migrations, and checking config before a deploy.",
+    },
+  ],
+  nav: [
+    { label: "Screenshots", href: "#screenshots" },
+    { label: "Docs", href: "docs/" },
+  ],
+  footer: [
+    { label: "Docs", href: "docs/" },
+    { label: "Getting started", href: "docs/getting-started/" },
+    { label: "Source", href: GOSTORE_REPO },
+    { label: "MIT licence", href: `${GOSTORE_REPO}/blob/main/LICENSE` },
+  ],
+};
+
 /** In the order the site index lists them. */
-export const PROJECTS: Project[] = [TELEPROMPTER, WEB2SDI];
+export const PROJECTS: Project[] = [TELEPROMPTER, WEB2SDI, GOSTORE];
 
 /** The absolute path of a link given relative to a project's root. */
 export function projectHref(p: Project, href: string): string {
