@@ -30,7 +30,7 @@ cd ../teleprompter && deno task dev
 TELEPROMPTER_APP_ORIGIN=http://localhost:8080 deno task dev
 ```
 
-Without that variable the demo frames `https://prompter.17xande.dev`.
+Without that variable the demo frames `https://teleprompter.17xande.dev`.
 
 ## Tasks
 

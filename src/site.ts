@@ -20,7 +20,7 @@ export const GITHUB = "https://github.com/17xande";
  *   TELEPROMPTER_APP_ORIGIN=http://localhost:8080 deno task dev
  */
 export const TELEPROMPTER_APP_ORIGIN = env("TELEPROMPTER_APP_ORIGIN") ??
-  "https://prompter.17xande.dev";
+  "https://teleprompter.17xande.dev";
 
 /**
  * Reading an env var throws when the permission was not granted, and this
