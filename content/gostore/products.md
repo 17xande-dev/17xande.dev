@@ -23,8 +23,9 @@ _Format_ for a recording. The shopper picks from these on the product page.
    - **Slug** — the product's address, as in `/products/blue-mug`. Leave it
      blank and it is made from the title. Changing it later breaks links people
      have saved or shared, so settle it early.
-   - **Description** — plain text. Formatting is not supported, and line breaks
-     are not kept, so the description shows as a single paragraph.
+   - **Description** — plain text, shown as you type it: leave a blank line
+     between paragraphs, and a single line break stays a line break. Bold, links
+     and other formatting are not supported.
    - **Active** — ticked, the product is in the shop; unticked, it is hidden.
      You can build a product with Active unticked and switch it on when it is
      ready.

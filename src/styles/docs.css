@@ -214,16 +214,22 @@
 .doc-group {
   margin: 2.5rem 0 0;
 }
-.doc-group + .doc-cards {
+.prose .doc-group + .doc-cards {
   margin-top: 1rem;
 }
 
-.doc-cards {
+/* Scoped to .prose, where the index renders, so these outrank the prose list
+   rules — `.prose ul`'s indent and `.prose li`'s spacing — rather than losing to
+   them, which left the cards indented from the text above them. */
+.prose .doc-cards {
   list-style: none;
   margin: 2rem 0 0;
   padding: 0;
   display: grid;
   gap: 1rem;
+}
+.prose .doc-cards > li {
+  margin: 0;
 }
 
 .doc-cards a {
