@@ -12,16 +12,25 @@ the same for both.
 
 1. **Checkout** creates a **pending** order: a snapshot of the titles, options
    and prices, with the total computed from the catalog inside the same
-   transaction. Stock does not move yet.
+   transaction. Stock does not move yet. Each checkout form carries a submission
+   key, so a double-click or a retried submit returns the same order rather than
+   placing a second one.
 2. The shopper is **handed over** to the gateway and pays there.
 3. The gateway **notifies** the store's callback, server to server. This is the
    only thing that can mark an order paid, and it is checked before anything
    happens.
-4. The order is marked **paid**, stock moves, the cart empties, and then the
-   emails go out.
+4. In one transaction, the order is marked **paid**, stock moves, download links
+   are issued and the emails are queued. The cart empties too — unless the
+   shopper has changed it since checking out, in which case their new basket is
+   kept. A worker then sends the emails, retrying any that fail.
 
 The page a shopper comes back to after paying proves nothing — anyone can open
 it — so it says the payment is being confirmed rather than that it succeeded.
+
+The callback answers `200` once a notification has been processed, or rejected
+for good as forged or broken. If verification cannot finish — the gateway's API
+is down, or the database is — it answers `503` with `Retry-After`, so the
+gateway tries again rather than the payment being lost.
 
 Stock is taken at payment, not reserved at checkout, so an abandoned checkout
 holds no inventory. The cost is that two people can pay for the last item; the

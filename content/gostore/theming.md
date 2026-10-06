@@ -87,9 +87,50 @@ Four things to know before shipping a theme:
   because Go checks them when a template runs. Render every page you have
   touched.
 
+## Keeping a copied file current
+
+A file you copy stops receiving gostore's changes to it, and a new feature that
+lives in that file will be missing from your store until you bring it across.
+When you upgrade, diff your overrides against the defaults. The ones that have
+needed it so far:
+
+- **`layouts/public.gohtml`** — the account menu. A signed-in administrator gets
+  a profile icon in the storefront header, fetched into a placeholder the layout
+  must keep inside its `<nav>`:
+
+  ```html
+  <span class="account-slot" hx-get="/admin/account/menu"
+    hx-trigger="load" hx-swap="outerHTML"></span>
+  ```
+
+  Its styles are the "Your account in the header" block of the default
+  `styles.css`, which a copied stylesheet needs too.
+- **`pages/checkout.gohtml`** — the submission key that makes a repeated submit
+  return the same order. Keep it inside the form, beside the CSRF field:
+  `<input type="hidden" name="checkout_key" value="{{.Form.Key}}">`.
+
+## Using a theme in a deployment
+
+The [ready-made deployments](/gostore/docs/deploying/) always mount a `theme/`
+directory next to their `compose.yaml` into the server at `/theme`, read-only.
+Put your theme there — `git clone` it, or copy it — and set, in `.env`:
+
+```bash
+TEMPLATE_DIR=/theme/templates
+STATIC_DIR=/theme/static
+```
+
+These are paths **inside the container**, so they always start `/theme/`. Spell
+them exactly: a misspelt name is not an error, it is simply never read, and the
+store runs with its default templates. Set only the ones your theme has — a
+stylesheet-only theme sets just `STATIC_DIR` — since a directory that is set but
+missing refuses the boot. Then `docker compose up -d`, which recreates the
+server with the new settings.
+
 ## Reloading
 
 `THEME_RELOAD=true` re-reads both directories on every request. It is for
 writing a theme and nothing else — leave it off in a deployment. Without it, the
 theme is read once at startup: a template that does not parse refuses the boot,
-and shipping a change is replacing the files and restarting.
+and shipping a change is replacing the files and restarting
+(`docker compose restart server`).

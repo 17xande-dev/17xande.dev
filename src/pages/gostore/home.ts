@@ -165,6 +165,14 @@ ${gallery(GOSTORE, SHOTS)}
   }
       ${
     feature(
+      "Run it from an AI assistant",
+      `The admin is also an MCP server: connect Claude, or any MCP client, with
+       an API token and manage products, images and orders in plain language —
+       as your account, under the same rules as the admin pages.`,
+    )
+  }
+      ${
+    feature(
       "Retheme without forking",
       `Every colour and size is a custom property in one stylesheet. Templates
        override by path from a directory, and nothing is rebuilt.`,
@@ -188,7 +196,8 @@ ${gallery(GOSTORE, SHOTS)}
     feature(
       "Runs anywhere a container does",
       `A static binary in a distroless image that reads <code>PORT</code> and
-       <code>DATABASE_URL</code>, logs JSON, and migrates itself on boot.`,
+       <code>DATABASE_URL</code>, logs JSON, and migrates itself on boot — with
+       two ready-made Compose stacks for a single server.`,
     )
   }
     </ul>
@@ -220,8 +229,8 @@ ${gallery(GOSTORE, SHOTS)}
   <div class="wrap narrow">
     <h2>Run it</h2>
     <p>
-      <code>make up</code> starts Postgres, a mail catcher, S3-compatible
-      storage and the store, and applies the migrations. The stack ships
+      <code>make up</code> starts Postgres, a mail catcher and the store, and
+      applies the migrations. The stack ships
       PayFast's published <strong>sandbox</strong> credentials, so a checkout
       works on the first try and takes no money.
     </p>

@@ -1,4 +1,5 @@
 import {
+  docGroups,
   GITHUB,
   type NavLink,
   type Project,
@@ -63,18 +64,22 @@ export const icons = {
 };
 
 function sidebar(p: Project, activeSlug: string): string {
-  const items = p.docs.map((d) => {
-    const current = d.slug === activeSlug;
-    return `<li><a href="/${p.slug}/docs/${d.slug}/"${
-      current ? ' aria-current="page"' : ""
-    }>${esc(d.title)}</a></li>`;
-  }).join("");
+  const lists = docGroups(p.docs).map(({ group, docs }) => {
+    const items = docs.map((d) => {
+      const current = d.slug === activeSlug;
+      return `<li><a href="/${p.slug}/docs/${d.slug}/"${
+        current ? ' aria-current="page"' : ""
+      }>${esc(d.title)}</a></li>`;
+    }).join("");
+    const heading = group ? `<p class="docs-nav-group">${esc(group)}</p>` : "";
+    return `${heading}<ul>${items}</ul>`;
+  }).join("\n  ");
 
   return `<nav class="docs-nav" aria-label="Documentation">
   <a class="docs-nav-home" href="/${p.slug}/docs/"${
     activeSlug === "index" ? ' aria-current="page"' : ""
   }>Overview</a>
-  <ul>${items}</ul>
+  ${lists}
 </nav>`;
 }
 

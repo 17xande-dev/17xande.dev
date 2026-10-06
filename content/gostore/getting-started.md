@@ -3,8 +3,8 @@
 ## What you need
 
 Docker with Compose, and Go if you want to run the server on the host. Nothing
-else: the stack brings its own Postgres, a mail catcher and S3-compatible
-storage.
+else: the stack brings its own Postgres and a mail catcher, and keeps product
+images and purchased files on disk.
 
 ## Start the stack
 
@@ -15,17 +15,23 @@ make up
 curl localhost:8080/healthz   # -> ok
 ```
 
-`make up` starts four containers:
+`make up` starts three containers:
 
 - **Postgres**, where everything lives.
 - **mailpit**, which catches every email the store sends, at
   `http://localhost:8025`.
-- **MinIO**, S3-compatible object storage, at `http://localhost:9001`.
 - **The server**, on `http://localhost:8080`.
 
-Migrations are applied on boot. The stack also mounts `theme/` into the server
-with reloading on, so a stylesheet or template dropped in there shows up on the
-next refresh. See [Theming](/gostore/docs/theming/).
+Product images and purchased files are kept on disk, under `.local/images` and
+`.local/downloads`; a deployment uses object storage instead — see
+[Deploying](/gostore/docs/deploying/). Migrations are applied on boot. The stack
+also mounts `theme/` into the server with reloading on, so a stylesheet or
+template dropped in there shows up on the next refresh. See
+[Theming](/gostore/docs/theming/).
+
+To run the server on the host instead — for a debugger, say — `make run` starts
+Postgres and mailpit in Compose and `go run`s the server against them, with no
+`.env` to write first.
 
 ## Load the demo catalog
 
@@ -55,7 +61,9 @@ docker compose logs server | grep setup_token
 
 From there, `/admin/users/new` creates the rest of the team. Give each person
 the least role that covers their job — `manager` is the usual answer for
-somebody running the shop.
+somebody running the shop. Everything the people running the shop need, from
+adding products to packing orders, is in the
+[Running the shop](/gostore/docs/signing-in/) guide.
 
 A deployment where nobody reads the logs can set `SETUP_TOKEN` instead, and
 nothing is printed.

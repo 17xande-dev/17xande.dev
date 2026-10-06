@@ -64,6 +64,18 @@
   color: var(--fg);
 }
 
+/* A heading over a run of pages, for a project whose docs serve more than one
+   reader. Set like the "On this page" label, so the two read as the same kind
+   of thing. */
+.docs-nav-group {
+  margin: 1rem 0 0.35rem;
+  padding: 0 0.7rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
 .docs-nav a:hover,
 .toc a:hover {
   color: var(--fg);
@@ -198,6 +210,13 @@
 }
 
 /* ---------- docs index ---------- */
+
+.doc-group {
+  margin: 2.5rem 0 0;
+}
+.doc-group + .doc-cards {
+  margin-top: 1rem;
+}
 
 .doc-cards {
   list-style: none;

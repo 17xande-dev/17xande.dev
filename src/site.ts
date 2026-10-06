@@ -46,6 +46,30 @@ export interface DocPage {
   title: string;
   blurb: string;
   file?: string;
+  /**
+   * A heading the page is listed under, in the docs index and the sidebar,
+   * for a project whose docs serve more than one reader. Consecutive pages
+   * with the same group share one heading; a project that sets none gets the
+   * flat list it always had.
+   */
+  group?: string;
+}
+
+/**
+ * A project's docs as runs of consecutive pages sharing a group, in registry
+ * order. Ungrouped pages form runs with an empty group name.
+ */
+export function docGroups(
+  docs: DocPage[],
+): { group: string; docs: DocPage[] }[] {
+  const out: { group: string; docs: DocPage[] }[] = [];
+  for (const d of docs) {
+    const group = d.group ?? "";
+    const last = out.at(-1);
+    if (last && last.group === group) last.docs.push(d);
+    else out.push({ group, docs: [d] });
+  }
+  return out;
 }
 
 export interface NavLink {
@@ -227,30 +251,88 @@ export const GOSTORE: Project = {
   },
   tags: ["Go", "htmx", "PostgreSQL", "PayFast", "MIT"],
   docs: [
+    // For the people who run an installed store day to day: no terminal, no
+    // configuration, just the admin.
+    {
+      slug: "signing-in",
+      title: "Signing in and your account",
+      blurb:
+        "The admin, your profile settings, your password, and what your role lets you do.",
+      group: "Running the shop",
+    },
+    {
+      slug: "products",
+      title: "Products and variants",
+      blurb:
+        "Adding a product, its sizes or formats, prices, stock, and a picture.",
+      group: "Running the shop",
+    },
+    {
+      slug: "categories",
+      title: "Categories",
+      blurb: "Grouping products so shoppers can filter the catalog.",
+      group: "Running the shop",
+    },
+    {
+      slug: "digital-products",
+      title: "Digital products",
+      blurb: "Selling downloads: attaching files and choosing who gets which.",
+      group: "Running the shop",
+    },
+    {
+      slug: "orders",
+      title: "Orders",
+      blurb:
+        "Finding an order, packing and shipping it, emails, and download access.",
+      group: "Running the shop",
+    },
+    {
+      slug: "team",
+      title: "Your team",
+      blurb:
+        "Adding people, choosing their role, resetting passwords, and disabling accounts.",
+      group: "Running the shop",
+    },
+    {
+      slug: "assistants",
+      title: "AI assistants",
+      blurb:
+        "Letting an assistant such as Claude manage products and orders for you.",
+      group: "Running the shop",
+    },
+    // For whoever installs and hosts it.
     {
       slug: "getting-started",
       title: "Getting started",
       blurb: "The local stack, a demo catalog, and the first administrator.",
+      group: "Hosting the store",
     },
     {
       slug: "configuration",
       title: "Configuration",
-      blurb: "What it needs to boot, and the settings most stores change.",
+      blurb:
+        "What it needs to boot, secrets, and the settings most stores change.",
+      group: "Hosting the store",
     },
     {
       slug: "payments",
       title: "Payments",
       blurb: "Setting up PayFast and SnapScan, and going live safely.",
+      group: "Hosting the store",
     },
     {
       slug: "theming",
       title: "Theming",
-      blurb: "Restyling with custom properties, and overriding templates.",
+      blurb:
+        "Restyling with custom properties, overriding templates, and using a theme in a deployment.",
+      group: "Hosting the store",
     },
     {
       slug: "deploying",
       title: "Deploying",
-      blurb: "The container, migrations, and checking config before a deploy.",
+      blurb:
+        "The two ready-made Compose stacks, backups, and running it anywhere else.",
+      group: "Hosting the store",
     },
   ],
   nav: [

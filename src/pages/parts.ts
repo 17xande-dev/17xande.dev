@@ -3,7 +3,7 @@
  * because they are built alike rather than because they were kept in step.
  */
 import { esc } from "../shell.ts";
-import type { Project } from "../site.ts";
+import { docGroups, type Project } from "../site.ts";
 
 export interface Shot {
   file: string;
@@ -51,12 +51,18 @@ export function docsIndex(
   p: Project,
   o: { blurb: string; intro: string; outro: string },
 ): string {
-  const cards = p.docs.map((d) =>
-    `<li><a href="/${p.slug}/docs/${d.slug}/">
+  const lists = docGroups(p.docs).map(({ group, docs }) => {
+    const cards = docs.map((d) =>
+      `<li><a href="/${p.slug}/docs/${d.slug}/">
   <h2>${esc(d.title)}</h2>
   <p>${esc(d.blurb)}</p>
 </a></li>`
-  ).join("\n");
+    ).join("\n");
+    const heading = group ? `<h2 class="doc-group">${esc(group)}</h2>\n` : "";
+    return `${heading}<ul class="doc-cards">
+${cards}
+</ul>`;
+  }).join("\n\n");
 
   return `<div class="prose">
 <h1>Documentation</h1>
@@ -64,9 +70,7 @@ export function docsIndex(
 
 ${o.intro}
 
-<ul class="doc-cards">
-${cards}
-</ul>
+${lists}
 
 <p style="margin-top:2rem">${o.outro}</p>
 </div>`;
