@@ -3,6 +3,12 @@
 Owners and administrators manage everyone's accounts, under **Users** in the
 admin. Managers and viewers do not see that link.
 
+![The Administrators page: an owner who is active, and a manager and a viewer who must still change their starting passwords, each with when they last signed in and a Manage link.](/gostore/screenshots/docs/team.webp)
+
+The **Status** column shows **Active**, **Disabled**, or **Must change
+password** for someone who has not yet replaced the starting password you gave
+them. Click **Manage** to open somebody's account.
+
 ## Add someone
 
 1. Go to **Users** and click **New administrator**.
@@ -26,8 +32,9 @@ you picked stops working the moment they have.
 
 ## Change someone's role
 
-Open their account from **Users**, choose the new **Role**, and click **Change
-role**. They are signed out, so the new role applies from their next sign-in.
+Click **Manage** beside them under **Users**, choose the new **Role**, and click
+**Change role**. They are signed out, so the new role applies from their next
+sign-in.
 
 ## Reset a password
 

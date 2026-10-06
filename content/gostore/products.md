@@ -38,6 +38,8 @@ _Format_ for a recording. The shopper picks from these on the product page.
    Option 2, and so on. Leave them blank for a product that comes one way only.
 6. Click **Save product**.
 
+![The New product form filled in for a hoodie: title, a two-paragraph description, Active ticked, the Apparel category ticked, Physical product as its kind, and Size and Colour as its variant options.](/gostore/screenshots/docs/product-new.webp)
+
 The product is saved, but it cannot be bought yet: the page now says **No
 variants yet — this product cannot be bought.** That is the next step.
 
@@ -57,6 +59,8 @@ On the product's page, under **Add a variant**:
 
 Click **Add variant**, and repeat for each one. Every variant is listed on the
 same page and can be changed there and **Save**d.
+
+![A t-shirt's Variants section: four variants, each with its SKU, Size, Colour, price and stock — one of them at 0, so sold out — and the Add a variant form beneath them.](/gostore/screenshots/docs/product-variants.webp)
 
 **Changing a price never changes an order already placed.** Each order keeps a
 copy of what was bought and what it cost at the time.
@@ -83,6 +87,8 @@ Each product has one image, shown on its catalog card and its page. Under
 a **JPEG, PNG, GIF or WebP**, up to **5 MB**. To change it, upload another file
 the same way — it replaces the old one — and to take it off, click **Remove
 image**. A product with no image shows a plain placeholder.
+
+![A product's Image section: the current picture, a file chooser to replace it, Upload, and Remove image.](/gostore/screenshots/docs/product-image.webp)
 
 Catalog cards show every picture in the same shape, so images of a consistent
 shape — all square, or all the same ratio — make the neatest catalog. Your

@@ -36,6 +36,8 @@ paid.
    _HTTP_ (or _Streamable HTTP_) transport, and a header `Authorization: Bearer`
    followed by your token.
 
+![The API tokens section of Profile settings: the New token form with a name and an expiry, and one token, "Claude Code, work laptop", listed with when it was created, last used and expires, and a Revoke button.](/gostore/screenshots/docs/api-tokens.webp)
+
 Treat the token like your password: anybody holding it can change the store as
 you. Make one per assistant and per computer, so each can be withdrawn on its
 own.

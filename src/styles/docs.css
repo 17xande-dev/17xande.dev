@@ -146,6 +146,17 @@
   margin-bottom: 0.35rem;
 }
 
+/* Screenshots in the docs. They are light pages on a dark site, so a border
+   and a little air keep them from reading as a hole in the page. Shot at 2×,
+   so they are shrunk to the column, never stretched. */
+.prose img {
+  display: block;
+  height: auto;
+  margin: 1.4rem 0;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+}
+
 .prose blockquote {
   margin: 1.2rem 0;
   padding: 0.2rem 0 0.2rem 1.1rem;

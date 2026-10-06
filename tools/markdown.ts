@@ -48,6 +48,18 @@ export class DocsRenderer extends Renderer {
     };
     return super.link({ ...retitled, href } as never);
   }
+
+  /**
+   * A screenshot, shrunk to the column, links to itself at full size: the
+   * pages in them are shot at 2× and a reader wanting to read a label should
+   * be one click from it. (render()'s sanitizer keeps the href and drops any
+   * class or loading attribute, so this adds nothing else.)
+   */
+  override image(
+    token: { href: string; title?: string | null; text: string },
+  ) {
+    return `<a href="${token.href}">${super.image(token as never)}</a>`;
+  }
 }
 
 /**

@@ -37,6 +37,8 @@ Across the top of every admin page:
 At the far right is the **profile icon**. Click it for a menu with your name,
 **Profile settings** and **Sign out**.
 
+![The admin's Products page, with the profile icon's menu open at the top right: the account's name and email, Profile settings, and Sign out.](/gostore/screenshots/docs/admin-menu.webp)
+
 When you are signed in, the same icon appears in the header of the storefront
 too, with an **Admin** link — a quick way back after checking how a product
 looks. Customers never see it.
@@ -44,6 +46,8 @@ looks. Customers never see it.
 ## Profile settings
 
 Open the profile icon and choose **Profile settings**.
+
+![The Profile settings page: who you are signed in as, and the form to change your password.](/gostore/screenshots/docs/profile-settings.webp)
 
 - **Password.** Enter your current password, then the new one twice. Passwords
   need at least 12 characters and there are no other rules, so a short phrase is

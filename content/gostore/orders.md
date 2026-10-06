@@ -35,9 +35,15 @@ money that never arrived.
 | **Oversold**               | Paid orders the stock could not cover — these need a decision          |
 | **Pending email delivery** | Paid orders whose receipt or packing email has not gone out yet        |
 
+![The Orders page with its search box and Show filter, listing six orders: one pending, three paid, one of them flagged oversold, and two paid and fulfilled.](/gostore/screenshots/docs/orders.webp)
+
 Click an order to open it.
 
 ## On an order's page
+
+Under the order's reference, badges say whether it is **paid** (and when),
+whether it is **oversold**, when it was placed, and whether the customer's
+confirmation email has been sent. Below them:
 
 - **Pack** — every item, its options, quantity and price, as they were when the
   order was placed. Renaming or repricing a product later does not change this.
@@ -58,6 +64,8 @@ For a paid order with something to ship, under **Fulfillment**:
    it.
 4. Click **Save fulfillment**.
 
+![A paid order's page: its badges, the Pack table with a t-shirt and two paperbacks, and the Fulfillment form with Status, Tracking reference, Internal note and Save fulfillment.](/gostore/screenshots/docs/order-fulfillment.webp)
+
 The store records who made the change and when. Fulfilling an order never
 changes the payment or the stock.
 
@@ -74,16 +82,18 @@ lists every order that needs that decision.
 
 ## Emails
 
-The **Email delivery** section of an order shows whether the receipt and the
-packing email have been sent, and any attempts that failed. Failed emails are
-retried automatically for a while; **Retry pending emails** tries again now —
-useful after a mail problem has been fixed. It never sends a second copy of an
-email that already went out.
+The **Email delivery** section of an order lists its emails — the receipt, and
+the packing email if your store sends one — with whether each has been sent, and
+any attempts that failed. Failed emails are retried automatically for a while;
+**Retry pending emails** tries again now — useful after a mail problem has been
+fixed. It never sends a second copy of an email that already went out.
 
 ## Download access
 
 For an order with digital products, **Downloads** lists each item, how many
 times it has been downloaded, and whether access is still on.
+
+![An order's Downloads section: one recording, downloaded 0 times, active, with a Revoke button.](/gostore/screenshots/docs/order-downloads.webp)
 
 - **Revoke** stops this buyer downloading it — after a refund, say. It affects
   nobody else and takes effect on their next click.

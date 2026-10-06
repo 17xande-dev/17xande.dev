@@ -28,6 +28,8 @@ after the store.
 tick list is what decides who gets what: for an audio + video bundle, add a
 third variant and tick both files against it, without uploading anything twice.
 
+![A recording's Files section. The recording is included in both the Audio and the Audio + transcript variants; the transcript only in Audio + transcript. Beneath them, the Add a file form with its Included in ticks.](/gostore/screenshots/docs/digital-files.webp)
+
 Each file's **Position** sets the order it is listed in on the buyer's download
 page.
 

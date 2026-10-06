@@ -4,6 +4,8 @@ Categories are how shoppers narrow the catalog: tick _Books_, and the catalog
 shows only books. They are optional — a small shop can do without them — and a
 product can be in as many as make sense.
 
+![The Categories page: Apparel, Books and Recordings, each with its slug, position and an Edit link, and the New category button.](/gostore/screenshots/docs/categories.webp)
+
 ## Add a category
 
 1. Go to **Categories** and click **New category**.
